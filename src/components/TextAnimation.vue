@@ -4,19 +4,20 @@
   <div class="animation">
     <section id="loginAnimation">
       <p class="animation__text">
-        > Username: <span class="animated-text">User</span><span class="cursor"></span>
+        > Username: <span class="animated-text">Netherguy4</span><span class="cursor"></span>
       </p>
       <p class="animation__text">
         > Password: <span class="animated-text">********</span><span class="cursor"></span>
       </p>
-      <p class="animation__welcome-text">> Welcome back, User!</p>
+      <p class="animation__welcome-text">> Welcome back, Netherguy4!</p>
     </section>
     <section id="searchAnimation">
       <p class="animation__text">
-        User > <span class="animated-text">cd Vue_Developer</span><span class="cursor"></span>
+        Netherguy4 > <span class="animated-text">cd Vue_Developer</span><span class="cursor"></span>
       </p>
       <p class="animation__text">
-        Vue_Developer > <span class="animated-text">dir</span><span class="cursor"></span>
+        Netherguy4/Vue_Developer > <span class="animated-text">dir</span
+        ><span class="cursor"></span>
       </p>
     </section>
   </div>
