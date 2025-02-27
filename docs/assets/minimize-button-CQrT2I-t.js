@@ -1,1 +1,0 @@
-import{c as t,a as o,o as n}from"./index-WP8hrjNA.js";const r={xmlns:"http://www.w3.org/2000/svg",width:"800",height:"800",fill:"none",viewBox:"0 0 24 24"};function s(i,e){return n(),t("svg",r,e[0]||(e[0]=[o("path",{stroke:"#000","stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2",d:"M5 12h14"},null,-1)]))}const a={render:s};export{a as default,s as render};

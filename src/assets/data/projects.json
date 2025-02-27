@@ -1,29 +1,29 @@
 [
   {
     "name": "Molecule",
-    "description": "Description",
+    "description": "My experience in GSAP and smooth scrolling",
     "language": "Vue.js"
   },
   {
     "name": "YouMeal",
-    "description": "Description",
+    "description": "Interesting implementation of vue router",
     "language": "Vue.js"
   },
   {
     "name": "VueSneakers",
-    "description": "Description",
+    "description": "Sneakers store with smooth animations",
     "language": "Vue.js"
   },
   {
     "name": "Portfolio",
-    "description": "Description",
+    "description": "My very own portfolio :)",
     "language": "Vue.js",
     "webUrl": "https://netherguy4.github.io/",
     "gitUrl": "https://github.com/netherguy4/netherguy4.github.io"
   },
   {
     "name": "Diamant",
-    "description": "Description",
+    "description": "Vanilla js project",
     "language": "JavaScript"
   }
 ]

@@ -67,7 +67,7 @@ import github from '@/assets/svg/github.svg'
     }
   }
   &__caption {
-    flex: 1 1 auto;
+    flex: 1 0 200px;
     display: flex;
     padding: 1em;
     flex-direction: column;
