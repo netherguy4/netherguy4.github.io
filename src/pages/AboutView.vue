@@ -32,8 +32,9 @@ import eyes from '@/assets/svg/eyes.svg'
           ><component style="height: 1em; width: 1em" :is="github" /> GitHub</a
         >
         or drop me a line:
-        <a class="block__link" href="mailto:tidalnether@gmail.com"
-          ><component style="height: 1em; width: 1em" :is="email" /> tidalnether@gmail.com</a
+        <a style="display: inline-flex" class="block__link" href="mailto:tidalnether@gmail.com"
+          ><component style="height: 1em; width: 1em; margin-right: 0.3em" :is="email" />
+          tidalnether@gmail.com</a
         >
       </p>
     </div>
@@ -62,6 +63,7 @@ import eyes from '@/assets/svg/eyes.svg'
   }
   &__subtitle {
     margin: 0 0 0.3em 0;
+    line-height: 120%;
   }
   &__image {
     position: absolute;
