@@ -16,15 +16,10 @@ import eyes from '@/assets/svg/eyes.svg'
       <p class="block__subtitle">
         I love coding and my goal is to create something beatifull, that people would love to use.
       </p>
-      <p class="block__subtitle" style="display: flex">
+      <p class="block__subtitle" style="display: flex; margin-bottom: 1.5em">
         Looking for a work to do
         <component style="height: 1em; width: 1em; margin-left: 0.3em" :is="eyes" />
       </p>
-    </div>
-    <div class="block__container block__image-wrapper">
-      <img src="/img/Photo.jpg" alt="" class="block__image" />
-    </div>
-    <div class="block__container">
       <h2 class="block__title">Contact Me</h2>
       <p class="block__subtitle">
         Find me on
@@ -38,15 +33,33 @@ import eyes from '@/assets/svg/eyes.svg'
         >
       </p>
     </div>
+    <div class="block__container block__image-wrapper">
+      <img src="/img/Photo.jpg" alt="" class="block__image" />
+    </div>
+    <!-- <div class="block__container">
+      <h2 class="block__title">Contact Me</h2>
+      <p class="block__subtitle">
+        Find me on
+        <a class="block__link" target="_blank" href="https://github.com/netherguy4"
+          ><component style="height: 1em; width: 1em" :is="github" /> GitHub</a
+        >
+        or drop me a line:
+        <a style="display: inline-flex" class="block__link" href="mailto:tidalnether@gmail.com"
+          ><component style="height: 1em; width: 1em; margin-right: 0.3em" :is="email" />
+          tidalnether@gmail.com</a
+        >
+      </p>
+    </div> -->
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .block {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2em;
-  align-items: center;
+  grid-auto-rows: auto;
+  column-gap: 2em;
+  align-items: flex-start;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   &__container {
     display: flex;
     flex-direction: column;
@@ -54,8 +67,12 @@ import eyes from '@/assets/svg/eyes.svg'
   }
   &__image-wrapper {
     position: relative;
-    padding: 0 0 100%;
-    min-width: 300px;
+    // padding: 0 0 100%;
+    aspect-ratio: 1;
+    max-width: 400px;
+    // @container (min-width: $M) {
+    //   min-width: 300px;
+    // }
   }
   &__title {
     font-size: 2em;

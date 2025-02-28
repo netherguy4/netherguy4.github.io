@@ -4,7 +4,7 @@ import 'vue-toastification/dist/index.css'
 import { createApp } from 'vue'
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { plugin, defaultConfig } from '@formkit/vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import CIcon from '@/components/CIcon.vue'
 
 import App from './App.vue'
@@ -13,11 +13,27 @@ import AboutView from './pages/AboutView.vue'
 
 const routes = [
   { path: '', redirect: 'Portfolio' },
-  { path: '/Portfolio', name: 'Portfolio', component: PortfolioView },
-  { path: '/About', name: 'About', component: AboutView },
+  {
+    path: '/Portfolio',
+    name: 'Portfolio',
+    component: PortfolioView,
+    meta: {
+      enterClass: 'animate__animated animate__fadeInLeft',
+      leaveClass: 'animate__animated animate__fadeOutRight',
+    },
+  },
+  {
+    path: '/About',
+    name: 'About',
+    component: AboutView,
+    meta: {
+      enterClass: 'animate__animated animate__fadeInRight',
+      leaveClass: 'animate__animated animate__fadeOutLeft',
+    },
+  },
 ]
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createMemoryHistory(),
   routes,
 })
 

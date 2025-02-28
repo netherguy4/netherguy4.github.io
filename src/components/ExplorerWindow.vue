@@ -4,6 +4,7 @@ import fullscreenButton from '@/assets/svg/fullscreen-button.svg'
 import minimizeButton from '@/assets/svg/minimize-button.svg'
 import about from '@/assets/svg/about.svg'
 import portfolio from '@/assets/svg/portfolio.svg'
+import 'animate.css'
 </script>
 
 <template>
@@ -31,7 +32,16 @@ import portfolio from '@/assets/svg/portfolio.svg'
         </button>
       </div>
     </div>
-    <RouterView class="explorer__content" />
+    <div class="explorer__container">
+      <router-view v-slot="{ Component, route }">
+        <transition
+          :enter-active-class="route.meta.enterClass"
+          :leave-active-class="route.meta.leaveClass"
+        >
+          <component class="explorer__content" :is="Component" />
+        </transition>
+      </router-view>
+    </div>
   </div>
 </template>
 
@@ -40,7 +50,7 @@ import portfolio from '@/assets/svg/portfolio.svg'
   visibility: hidden;
   font-family: Roboto, serif;
   background: #fff;
-  // overflow: hidden;
+  overflow: hidden;
   color: rgb(33, 33, 33);
   &__head {
     display: flex;
@@ -49,6 +59,7 @@ import portfolio from '@/assets/svg/portfolio.svg'
     align-items: flex-start;
     border-radius: 0.5em 0.5em 0 0;
     font-size: 1.25em;
+    container-type: normal;
   }
   &__folders {
     display: flex;
@@ -83,6 +94,9 @@ import portfolio from '@/assets/svg/portfolio.svg'
   &__buttons {
     height: 1.35em;
     display: flex;
+    @media (max-width: toem(380)) {
+      display: none;
+    }
   }
   &__button {
     transition: $activeTime;
@@ -110,11 +124,25 @@ import portfolio from '@/assets/svg/portfolio.svg'
       height: 50%;
     }
   }
+  &__container {
+    height: calc(100vh - 6em - toem(42));
+    position: relative;
+  }
   &__content {
-    // max-height: calc(100vh - 6em -toem(32));
+    height: calc(100vh - 6em - toem(42));
     // min-height: 50vh;
     overflow: auto;
     padding: 1em 0.5em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
+}
+</style>
+<style lang="scss">
+:root {
+  --animate-duration: 600ms;
+  // --animate-delay: 0.9s;
 }
 </style>

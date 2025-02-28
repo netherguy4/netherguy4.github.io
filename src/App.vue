@@ -3,8 +3,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Draggable } from 'gsap/all'
 import { TextPlugin } from 'gsap/TextPlugin'
-import Lenis from 'lenis'
-import { onMounted, provide } from 'vue'
+// import Lenis from 'lenis'
+import { onMounted } from 'vue'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
@@ -12,20 +12,20 @@ gsap.registerPlugin(Draggable)
 
 // *Scroll smoothing and triggers ----------------------------------------------------------------------------------------------
 
-const lenis = new Lenis({
-  lerp: 0.05,
-})
-lenis.on('scroll', ScrollTrigger.update)
-provide('lenis', lenis)
+// const lenis = new Lenis({
+//   lerp: 0.05,
+// })
+// lenis.on('scroll', ScrollTrigger.update)
+// provide('lenis', lenis)
 
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000) // Convert time from seconds to milliseconds
-})
-gsap.ticker.lagSmoothing(0)
+// gsap.ticker.add((time) => {
+//   lenis.raf(time * 1000) // Convert time from seconds to milliseconds
+// })
+// gsap.ticker.lagSmoothing(0)
 
 // * ---------------------------------------------------------------------------------------------------------------------------
 
-import HintButton from './components/HintButton.vue'
+// import HintButton from './components/HintButton.vue'
 import TextAnimation from './components/TextAnimation.vue'
 import ExplorerWindow from './components/ExplorerWindow.vue'
 
@@ -35,31 +35,38 @@ onMounted(() => {
     cursor: 'default',
     dragClickables: false,
     trigger: '.explorer__head',
-    onDragStart: () => lenis.stop(),
-    onDragEnd: () => lenis.start(),
+    // onDragStart: () => lenis.stop(),
+    // onDragEnd: () => lenis.start(),
   })
   let tl = gsap.timeline({
-    paused: true,
-    scrollTrigger: {
-      trigger: '.main__text-animation',
-      start: 'top top',
-      end: '+=3000px top',
-      // pin: '.main',
-      pin: true,
-      scrub: 0.5,
-      // markers: true,
-    },
+    // paused: true,
+    // scrollTrigger: {
+    //   trigger: '.main__text-animation',
+    //   start: 'top top',
+    //   end: '+=3000px top',
+    //   // pin: '.main',
+    //   pin: true,
+    //   scrub: 0.5,
+    //   // markers: true,
+    // },
   })
-  gsap.to('#hint>svg', {
-    keyframes: {
-      yPercent: [-100, 0],
-      autoAlpha: [0, 1, 0],
-      ease: 'none',
-    },
-    stagger: 0.25,
-    ease: 'power2.inOut',
-    duration: 1.5,
-    repeat: -1,
+  tl.timeScale(3)
+  // gsap.to('#hint>svg', {
+  //   keyframes: {
+  //     yPercent: [-100, 0],
+  //     autoAlpha: [0, 1, 0],
+  //     ease: 'none',
+  //   },
+  //   stagger: 0.25,
+  //   ease: 'power2.inOut',
+  //   duration: 1.5,
+  //   repeat: -1,
+  // })
+  tl.from('.main__text-animation', {
+    autoAlpha: 0,
+    yPercent: -100,
+    ease: 'power2.in',
+    duration: 0.75,
   })
   // !Login animation
   let section = document.getElementById('loginAnimation')
@@ -125,40 +132,49 @@ onMounted(() => {
       display: 'none',
     })
   })
+  tl.to('.main__text-animation', { autoAlpha: 0, yPercent: -100, ease: 'power2', duration: 0.75 })
   // !Explorer animation
-  let exp = gsap.timeline({
-    defaults: { ease: 'power2.in' },
-    scrollTrigger: {
-      trigger: '.main__text-animation',
-      start: 'top top',
-      toggleActions: 'play play play reverse',
-      // markers: true,
-    },
-  })
-  // exp.to('#app', { background: '#f9f9f9', duration: 0.25 })
-  exp.set('#hint', { display: 'none' }, '<')
-  exp.fromTo(
+  tl.to(
     '.explorer',
     {
-      autoAlpha: 0,
-    },
-    {
-      duration: 0.25,
+      ease: 'power2.in',
+      duration: 0.75,
       autoAlpha: 1,
     },
-    '<0.2',
+    '>-0.35',
   )
+  // let exp = gsap.timeline({
+  //   defaults: { ease: 'power2.in' },
+  //   // scrollTrigger: {
+  //   //   trigger: '.main__text-animation',
+  //   //   start: 'top top',
+  //   //   toggleActions: 'play play play reverse',
+  //   //   // markers: true,
+  //   // },
+  //   paused: true,
+  // })
+  // exp.to('#app', { background: '#f9f9f9', duration: 0.25 })
+  // exp.set('#hint', { display: 'none' }, '<')
 })
 </script>
 
 <template>
-  <HintButton />
+  <!-- <HintButton /> -->
   <main class="main">
     <TextAnimation class="main__text-animation" />
     <div class="main__container">
       <ExplorerWindow class="main__content" />
     </div>
   </main>
+  <div class="pre" style="display: none">
+    <img src="/img/Diamaint.jpg" alt="" /><img src="/img/Molecule.jpg" alt="" /><img
+      src="/img/Photo.jpg"
+      alt=""
+    /><img src="/img/Portfolio.jpg" alt="" /><img src="/img/VueSneakers.jpg" alt="" /><img
+      src="/img/YouMeal.jpg"
+      alt=""
+    />
+  </div>
 </template>
 
 <style lang="scss">
@@ -167,7 +183,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   // min-height: 310vh;
-  min-height: calc(3000px + 100vh + toem(154));
+  // min-height: calc(3000px + 100vh + toem(154));
   // background: #c9c9c9;
   overflow-x: hidden;
   font-size: 0.7em;
@@ -175,11 +191,11 @@ onMounted(() => {
     font-size: 1em;
   }
 }
-body {
-  @media (hover: hover) {
-    overflow: hidden;
-  }
-}
+// body {
+//   @media (hover: hover) {
+//     overflow: hidden;
+//   }
+// }
 .main {
   color: green;
   flex: 1 1 auto;
@@ -188,7 +204,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-    position: relative;
+    position: fixed;
     will-change: auto;
   }
   &__container {
