@@ -205,11 +205,11 @@ onMounted(() => {
     flex-direction: column;
     gap: 0.3em;
     position: fixed;
-    will-change: auto;
+    // will-change: auto;
   }
   &__container {
     height: 100%;
-    max-width: 800px;
+    // max-width: 800px;
     margin: 0 auto;
   }
   &__content {

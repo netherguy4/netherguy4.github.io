@@ -56,7 +56,7 @@ onUnmounted(() => {
     }
   }
   &__project {
-    will-change: transform;
+    // will-change: transform;
     padding: 0.5em;
     // border-radius: 1em;
     // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
