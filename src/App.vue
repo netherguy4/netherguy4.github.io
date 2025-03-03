@@ -32,7 +32,7 @@ import ExplorerWindow from './components/ExplorerWindow.vue'
 onMounted(() => {
   Draggable.create('.explorer', {
     bounds: '#app',
-    cursor: 'default',
+    cursor: 'move',
     dragClickables: false,
     trigger: '.explorer__head',
     // onDragStart: () => lenis.stop(),

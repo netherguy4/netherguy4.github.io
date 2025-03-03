@@ -11,7 +11,7 @@ import github from '@/assets/svg/github.svg'
 </script>
 
 <template>
-  <li class="card">
+  <div class="card">
     <figure class="card__container">
       <img :src="`./img/${name}.jpg`" :alt="name" class="card__image" />
       <figcaption class="card__caption">
@@ -39,7 +39,7 @@ import github from '@/assets/svg/github.svg'
         </div>
       </figcaption>
     </figure>
-  </li>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -57,6 +57,7 @@ import github from '@/assets/svg/github.svg'
     border-radius: 1em;
     border: 1px solid #fff;
     transition: $trTime 0.1s ease-in-out;
+    pointer-events: none;
   }
   &:hover .card__image {
     @media (min-width: $M) {
@@ -111,6 +112,14 @@ import github from '@/assets/svg/github.svg'
       height: 1em;
       width: 1em;
     }
+  }
+}
+[data-swapy-dragging] .card__image {
+  @media (min-width: $M) {
+    border: 1px solid #cdcdcd;
+    transition: $hoverTime ease-in-out;
+    border-radius: 0 1em 0 1em;
+    width: 50%;
   }
 }
 </style>

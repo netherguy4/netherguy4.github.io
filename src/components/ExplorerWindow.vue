@@ -131,7 +131,8 @@ import 'animate.css'
   &__content {
     height: calc(100vh - 6em - toem(42));
     // min-height: 50vh;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 1em 0.5em;
     position: absolute;
     top: 0;
